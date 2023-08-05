@@ -23,7 +23,6 @@ public class UserModule implements CommandLineRunner
 
 	@Override
 	public void run(String... args) throws Exception {
-		// TODO Auto-generated method stub
 		repo.save(UserData.builder().userName("URLService").password(passwordEncoder.encode("urlsvc")).authorities("service").build());
 	}
 }

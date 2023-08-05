@@ -1,6 +1,7 @@
 package org.URLModule.service;
 
 import org.URLModule.model.User;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -34,7 +35,10 @@ public class UserAuth implements UserDetailsService{
 		} 
 		catch (ParseException e) {
 		}
-		return User.builder().userName((String)obj.get("username")).password((String)obj.get("password")).authorities("user").build();
+		JSONArray authoritiesArray = (JSONArray) obj.get("authorities");
+		JSONObject authorityObject = (JSONObject) authoritiesArray.get(0);
+	    String authorityValue = (String) authorityObject.get("authority");
+		return User.builder().userName((String)obj.get("username")).password((String)obj.get("password")).authorities(authorityValue).build();
 	}
 
 }
