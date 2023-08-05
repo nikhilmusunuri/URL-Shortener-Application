@@ -2,7 +2,6 @@ package org.UserModule;
 
 import org.UserModule.model.UserData;
 import org.UserModule.repository.UserRepo;
-import org.UserModule.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

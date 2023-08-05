@@ -1,9 +1,9 @@
 package org.URLModule.config;
 
-import org.URLModule.service.URLShortenService;
+
+import org.URLModule.service.UserAuth;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -13,20 +13,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
 	@Autowired
-	URLShortenService userservice;
+	UserAuth userAuth;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userservice);
+        auth.userDetailsService(userAuth);
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/url-shortener/shortenURL").hasAuthority("user")
-                .antMatchers("/testapicall/**").hasAuthority("user")
-                .antMatchers(HttpMethod.POST,"/url-shortener/singup/**").hasAuthority("service")
+                .antMatchers("/url-shortener/shortenurl").hasAuthority("user")
+                .antMatchers("/US/getmyUrlClicks/**").hasAuthority("user")
+                .antMatchers("/US/short/**").hasAuthority("user")
                 .and()
                 .httpBasic();
     }

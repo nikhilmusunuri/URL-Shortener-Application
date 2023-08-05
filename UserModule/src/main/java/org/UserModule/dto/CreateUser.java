@@ -1,13 +1,8 @@
 package org.UserModule.dto;
 
-import java.util.UUID;
 
 import javax.validation.constraints.NotBlank;
-
 import org.UserModule.model.UserData;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
-
 import lombok.*;
 
 @Builder
